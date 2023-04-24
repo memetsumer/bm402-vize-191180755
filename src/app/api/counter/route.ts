@@ -17,7 +17,7 @@ export async function GET(request: Request) {
   const value = await redis.get(key);
   if (value) {
     await redis.incr(key);
-    return new Response(JSON.stringify({ region: value }));
+    return new Response(JSON.stringify({ counter: value }));
   } else {
     await redis.incr(key);
   }

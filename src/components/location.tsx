@@ -83,6 +83,10 @@ export const ClientLocation = () => {
         {"Live Redis counter from"} {region?.toLowerCase() === "eu" ? "AWS" : "GCP"}{" "}
         {" is"} {counter && JSON.stringify(counter)}
       </p>
+      <p className="font-bold mt-4 text-lg">
+        {"This page has been visited from"} {region?.toLowerCase() === "eu" ? "AWS" : "GCP"}{" "}
+        {" for"} {counter && counter.counter}{" times."}
+      </p>
     </div>
   );
 };

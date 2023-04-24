@@ -28,7 +28,7 @@ export default function Home() {
           </a>
         </div>
       </div>
-      <div className="flex items-center flex-col text-center">
+      <div className="flex items-center flex-col text-center mb-4">
         <p>BM402 Dersi</p>
         <p>Vize Araştırma Ödevi</p>
         <p>Mehmet Şahin Sümer</p>
