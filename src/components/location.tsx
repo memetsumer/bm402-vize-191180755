@@ -15,10 +15,11 @@ export const ClientLocation = () => {
     region ? `/api/hello?region=${region}` : null,
     fetcher
   );
-  const { data: counter, error: errorCounter, isLoading: isLoadingCounter } = useSWR(
-    region ? `/api/counter?region=${region}` : null,
-    fetcher
-  );
+  const {
+    data: counter,
+    error: errorCounter,
+    isLoading: isLoadingCounter,
+  } = useSWR(region ? `/api/counter?region=${region}` : null, fetcher);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -76,16 +77,20 @@ export const ClientLocation = () => {
         {" is the closest cloud provider to your location"}
       </p>
       <p className="font-bold mt-4 text-lg">
-        {"Live Redis data from"} {region?.toLowerCase() === "eu" ? "AWS" : "GCP"}{" "}
-        {" is"} {data && JSON.stringify(data)}
+        {"Live Redis data from"}{" "}
+        {region?.toLowerCase() === "eu" ? "AWS" : "GCP"} {" :"}{" "}
+        {data && JSON.stringify(data)}
       </p>
-      <p className="font-bold mt-4 text-lg">
-        {"Live Redis counter from"} {region?.toLowerCase() === "eu" ? "AWS" : "GCP"}{" "}
-        {" is"} {counter && JSON.stringify(counter)}
+      <p className="font-bold mt-1 text-lg">
+        {"Live Redis counter from"}{" "}
+        {region?.toLowerCase() === "eu" ? "AWS" : "GCP"} {" :"}{" "}
+        {counter && JSON.stringify(counter)}
       </p>
-      <p className="font-bold mt-4 text-lg">
-        {"This page has been visited from"} {region?.toLowerCase() === "eu" ? "AWS" : "GCP"}{" "}
-        {" for"} {counter && counter.counter}{" times."}
+      <p className="font-bold mt-1 text-lg">
+        {"This page has been visited/refetched from"}{" "}
+        {region?.toLowerCase() === "eu" ? "AWS" : "GCP"} {" for"}{" "}
+        {counter && counter.counter}
+        {" times."}
       </p>
     </div>
   );
