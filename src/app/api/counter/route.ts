@@ -13,12 +13,13 @@ export async function GET(request: Request) {
     return new Response("Missing redis", { status: 500 });
   }
 
-  const key = "region";
+  const key = "counter";
   const value = await redis.get(key);
   if (value) {
+    await redis.incr(key);
     return new Response(JSON.stringify({ region: value }));
   } else {
-    await redis.set(key, region);
+    await redis.incr(key);
   }
 
   return new Response(JSON.stringify({ hello: "world" }));
